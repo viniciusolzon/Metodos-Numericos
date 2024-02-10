@@ -1,4 +1,5 @@
 from sympy import var
+from sympy import diff
 from sympy import sympify
 from sympy.utilities.lambdify import lambdify
 
@@ -103,10 +104,6 @@ class PontoFixo(Metodo):
             print(f"a = {self.get_a()}")
             print(f"b = {self.get_b()}")
 
-            # Verifica se g(x) é convergente
-            # primeiro critério: o módulo da derivada é < 1 para todo x pertencente ao intervalo [a,b]
-            # segundo critério: x0 está dentro do intervalo [a,b]
-
             print(f"x = {x}")
 
             # Calcula f(x)
@@ -160,17 +157,35 @@ def main():
     funcao = sympify(expressao)
     f = lambdify(x, funcao)
 
-
     if(escolha == 2):
         expressao_ = input("Função g(x)= ")
         x = var('x')
         funcao_ = sympify(expressao_)
         g = lambdify(x, funcao_)
 
+        # Primeira derivada de g(x)
+        dfdx = diff(funcao_,x)
+        derivada = lambdify(x, dfdx)
 
     print("Intervalo [a,b]")
     a = float(input("a = "))
     b = float(input("b = "))
+
+    if (escolha == 2):
+        # Verifica se g(x) é convergente:
+        # primeiro critério: o módulo da derivada é < 1 para todo x pertencente ao intervalo [a,b]
+        if abs(derivada(a)) > 1:
+            print("Erro na escolha de g(x) ou do intervalo [a,b]")
+            return
+
+        if abs(derivada(b)) > 1:
+            print("Erro na escolha de g(x) ou do intervalo [a,b]")
+            return
+
+        # segundo critério: x0 está dentro do intervalo [a,b]
+        # como por padrão x0 sempre é na metade do intervalo [a,b], isso já está garantido
+
+
     erro = float(input("Erro tolerado = "))
     iters = int(input("Número máximo de iterações = "))
 
