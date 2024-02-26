@@ -43,14 +43,18 @@ class Bissecao(Metodo):
             # print(f"b = {self.get_b()}")
 
             # Calcula x
-            x = (self.get_a() + self.get_b()) / 2
-            print(f"x = {x}")
+            #x = (self.get_a() + self.get_b()) / 2 # usando o método bissecao
+            #print(f"x = {x}")
 
             # Calcula f(a) e f(b)
             fa = self.f(self.get_a())
             fb = self.f(self.get_b())
             # print(f"f(a) = {fa}")
             # print(f"f(b) = {fb}")
+
+            # Calcula x
+            x = ((self.get_a() * fb) - (self.get_b() * fa)) / (fb - fa) # usando o método bissecao
+            print(f"x = {x}")
 
             # Calcula f(x)
             fx = self.f(x)
