@@ -38,6 +38,7 @@ class PontoFixo():
             # Calcula x
             x = ((self.get_a() * fb) - (self.get_b() * fa)) / (fb - fa)
             print(f"x = {x}")
+            x_anterior = x
 
             # Calcula f(a) e f(b)
             fa = self.f(self.get_a())
@@ -55,12 +56,14 @@ class PontoFixo():
                 print(f"Encontrou a raíz x = {x} em {self.get_iters()} iterações.")
                 return
             
-            # Verifica o critério de erro tolerado
-            if abs(self.f(x)) <= self.get_erro():
-                print(f"\nAlgoritmo encerrado!")
-                print(f"f(x) = {self.f(x)} já está próximo o suficiente.")
-                print(f"Raíz aproximada encontrada em {i+1} iterações: x = {x}.")
-                return
+            if i >=1:
+                # Verifica o critério de erro tolerado
+                if abs(x - x_anterior) <= self.get_erro():
+                    print(f"\nAlgoritmo encerrado!\n")
+                    print(f"Erro absoluto = {abs(x - x_anterior)}.")
+                    print(f"f(x) = {self.f(x)}.")
+                    print(f"Raíz aproximada encontrada em {i+1} iterações: x = {x}\n.")
+                    return
 
             else:
                 # Verifica se f(x) tem o mesmo sinal de f(a) ou de f(b)

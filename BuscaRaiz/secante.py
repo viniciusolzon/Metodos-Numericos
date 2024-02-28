@@ -30,48 +30,39 @@ class Bissecao():
     def executa(self):
         print("\n* Solução *")
 
+        x0 = self.get_a()
+        x1 = self.get_b()
+
         for i in range(self.get_iters()):
             print(f"\nIteração {i}")
             # print(f"a = {self.get_a()}")
             # print(f"b = {self.get_b()}")
 
             # Calcula x
-            x = (self.get_a() + self.get_b()) / 2
-            print(f"x = {x}")
-
-            # Calcula f(a) e f(b)
-            fa = self.f(self.get_a())
-            fb = self.f(self.get_b())
-            # print(f"f(a) = {fa}")
-            # print(f"f(b) = {fb}")
+            x2 = x1 - ((self.f(x1)*(x1-x0)) /
+                         (self.f(x1)-(self.f(x0))) )
+            print(f"x = {x2}")
 
             # Calcula f(x)
-            fx = self.f(x)
+            fx = self.f(x2)
             print(f"f(x) = {fx}")
 
             # Verifica se encontrou a raíz
-            if self.f(x) == 0:
+            if self.f(x2) == 0:
                 print(f"\nAlgoritmo encerrado!")
-                print(f"Encontrou a raíz x = {x} em {self.get_iters()} iterações.")
+                print(f"Encontrou a raíz x = {x2} em {self.get_iters()} iterações.")
                 return
             
             # Verifica o critério de erro tolerado
-            if abs(self.f(x)) <= self.get_erro():
-                print(f"\nAlgoritmo encerrado!")
-                print(f"f(x) = {self.f(x)} já está próximo o suficiente.")
-                print(f"Raíz aproximada encontrada em {i+1} iterações: x = {x}.")
+            if abs(x2 - x1) <= self.get_erro():
+                print(f"\nAlgoritmo encerrado!\n")
+                print(f"Erro absoluto = {abs(x2 - x1)}.")
+                print(f"f(x) = {self.f(x2)}.")
+                print(f"Raíz aproximada encontrada em {i+1} iterações: x = {x2}\n.")
                 return
 
-            else:
-                # Verifica se f(x) tem o mesmo sinal de f(a) ou de f(b)
-                if fx * fa > 0:
-                    # print(f"f(x) tem o mesmo sinal de f(a)")
-                    # Altera o a
-                    self.set_a(x)
-                else:
-                    # print(f"f(x) tem o mesmo sinal de f(b)")
-                    # Altera o b
-                    self.set_b(x)
+            x0 = x1
+            x1 = x2
 
             input()
 
@@ -84,7 +75,7 @@ class Bissecao():
 def main():
 
     print("\t-Zeros de funções-")
-    print("\tMétodo da Bisseção")
+    print("\tMétodo da Secante")
     print("\nInforme as condições iniciais:")
         
     # f(x) = (x*x*x)-9*x+5
