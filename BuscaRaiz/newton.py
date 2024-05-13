@@ -106,8 +106,8 @@ def main():
     erro = float(input("Erro tolerado = "))
     iters = int(input("Número máximo de iterações = "))
 
-    ponto_fixo = Newton(f, f_linha, a, b, erro, iters)
-    ponto_fixo.executa()
+    newton = Newton(f, f_linha, a, b, erro, iters)
+    newton.executa()
 
 if __name__ == "__main__":
     main()

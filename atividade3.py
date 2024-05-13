@@ -39,7 +39,7 @@ def mostra_UmTercoSimpson():
     integral_aproximada = um_terco_simpson.solve()
     print(f"Valor aproximado da integração: {integral_aproximada}")
 
-######################################## 1/3 SIMPSON #############################################
+######################################## MMQ #############################################
 
 class MMQ():
     def __init__(self, x, y_lin, y_quad):
@@ -61,7 +61,7 @@ class MMQ():
 
             return b0, b1
 
-        # Usuário escolheu método linear
+        # Usuário escolheu método quadratico
         elif metodo == 2:
             n = len(self.x)
             x_sum = np.sum(self.x)
@@ -74,7 +74,6 @@ class MMQ():
             x_squared_y_sum = np.sum(self.x**2 * y)
 
             A = np.array([[n, x_sum, x_squared_sum],[x_sum, x_squared_sum, x_cubed_sum],[x_squared_sum, x_cubed_sum, x_quad_sum]])
-            
             b = np.array([y_sum, xy_sum, x_squared_y_sum])
             b0, b1, b2 = np.linalg.solve(A, b)
 

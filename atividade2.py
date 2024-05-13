@@ -28,12 +28,12 @@ class FatoracaoLU():
                         self.U[j][k] = self.U[j][k] - self.L[j][i]*self.U[i][k]
             else:
                 print("Nao possui decomposicao LU")
+                return
 
         return self.L, self.U
 
 def printMatrix(matriz, n, m):
     for i in range(n):
-
         for j in range(m):
             print(f'{matriz[i][j]:.4f}', end = " ")
         print("\n")
@@ -72,11 +72,11 @@ def mostra_LU():
 
 class Thomas():
     def __init__(self, ds, dp, di, b):
-        self.b = b
         self.n = len(b)
         self.ds = ds
         self.dp = dp
         self.di = di
+        self.b = b
 
     def solve(self):
         self.x = np.zeros(self.n)
@@ -144,7 +144,7 @@ def mostra_Thomas():
 
 class GaussSeidel():
     # Melhoria do processo iterativo de Jacobi
-    def __init__(self, A, b, vetorsolucao, iteracoes = 10, erro_tolerado = 1e-10):
+    def __init__(self, A, b, vetorsolucao, iteracoes = 12, erro_tolerado = 1e-5):
         self.A = A
         self.b = b
         self.iteracoes = iteracoes
