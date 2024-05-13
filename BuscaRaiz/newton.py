@@ -1,3 +1,6 @@
+# VINICIUS FREITAS SCHIAVINATO OLZON
+# MATRÍCULA 20210026803
+
 from sympy.utilities.lambdify import lambdify
 from sympy import sympify
 from sympy import diff
