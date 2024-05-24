@@ -1,2 +1,2 @@
 # Metodos-Numericos
-- Implementações para a fixação e aprendizagem de Métodos Numéricos
+- Trabalhos implementados ao decorrer da disciplina de Métodos Numéricos

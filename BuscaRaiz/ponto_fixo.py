@@ -3,6 +3,8 @@ from sympy import sympify
 from sympy import diff
 from sympy import var
 
+######################################## Ponto Fixo #######################################################
+
 class PontoFixo():
     def __init__(self, f, a, b, erro, iters, g):
         self.f = f
@@ -75,7 +77,6 @@ class PontoFixo():
         return
 
 def main():
-
     print("\t-Zeros de funções-")
     print("\tMétodo do Ponto Fixo")
     print("\nInforme as condições iniciais:")

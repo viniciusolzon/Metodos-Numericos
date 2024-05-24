@@ -2,6 +2,8 @@ from sympy.utilities.lambdify import lambdify
 from sympy import sympify
 from sympy import var
 
+######################################## Secante #######################################################
+
 class Bissecao():
     def __init__(self, f, a, b, erro, iters):
         self.f = f
@@ -73,7 +75,6 @@ class Bissecao():
 
 
 def main():
-
     print("\t-Zeros de funções-")
     print("\tMétodo da Secante")
     print("\nInforme as condições iniciais:")

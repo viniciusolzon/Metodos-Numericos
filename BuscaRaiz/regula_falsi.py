@@ -2,6 +2,8 @@ from sympy.utilities.lambdify import lambdify
 from sympy import sympify
 from sympy import var
 
+######################################## Regula Falsi #######################################################
+
 class PontoFixo():
     def __init__(self, f, a, b, erro, iters):
         self.f = f
@@ -85,7 +87,6 @@ class PontoFixo():
 
 
 def main():
-
     print("\t-Zeros de funções-")
     print("\tMétodo Regula Falsi")
     print("\nInforme as condições iniciais:")

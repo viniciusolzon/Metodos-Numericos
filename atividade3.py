@@ -1,6 +1,3 @@
-# VINICIUS FREITAS SCHIAVINATO OLZON
-# MATRÍCULA 20210026803
-
 import numpy as np
 import matplotlib.pyplot as plt
 

@@ -1,10 +1,9 @@
-# VINICIUS FREITAS SCHIAVINATO OLZON
-# MATRÍCULA 20210026803
-
 from sympy.utilities.lambdify import lambdify
 from sympy import sympify
 from sympy import diff
 from sympy import var
+
+######################################## Newton #######################################################
 
 class Newton():
     def __init__(self, f, f_linha, a, b, erro, iters):
